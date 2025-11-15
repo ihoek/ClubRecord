@@ -5,6 +5,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Main from "./pages/main/main";
 import Sidebar from "./components/sidebar/sidebar";
 import Login from "./pages/login/login";
+import Join from "./pages/join/join";
 
 // utils
 import { sidebarItems } from "./utils/list";
@@ -22,6 +23,7 @@ function App() {
         <>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/join" element={<Join />} />
           </Routes>
         </>
       ) : (

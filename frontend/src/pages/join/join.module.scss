@@ -1,0 +1,385 @@
+@import "../../styles/variables.scss";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  font-family: $font-base;
+  overflow: hidden;
+
+  .leftPanel {
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+
+    .logo {
+      font-size: $font-size-lg;
+      font-weight: 700;
+      color: $color-primary;
+      font-family: $font-heading;
+      margin-bottom: 15px;
+    }
+
+    .titleSection {
+      margin-bottom: 20px;
+
+      .subtitle {
+        font-size: $font-size-sm;
+        color: $color-muted;
+        font-weight: 400;
+        margin-bottom: 4px;
+      }
+
+      .title {
+        font-size: $font-size-xl;
+        font-weight: 700;
+        color: $color-text;
+        font-family: $font-heading;
+        line-height: 1.2;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      overflow-y: auto;
+      flex: 1;
+      min-height: 0;
+
+      .email_section,
+      .password_section,
+      .password_confirm_section,
+      .name_section,
+      .age_section,
+      .phone_number_section,
+      .address_section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        label {
+          font-size: $font-size-sm;
+          font-weight: 600;
+          color: $color-text;
+        }
+
+        .inputWrapper {
+          position: relative;
+          width: 100%;
+
+          input {
+            width: 100%;
+            padding: 10px 35px 10px 12px;
+            font-size: $font-size-sm;
+            border: 1px solid #e5e7eb;
+            border-radius: $radius-md;
+            background-color: white;
+            color: $color-text;
+            box-sizing: border-box;
+            transition: all 0.2s;
+
+            &:focus {
+              outline: none;
+              border-color: $color-primary;
+              box-shadow: 0 0 0 3px rgba(39, 110, 241, 0.1);
+            }
+
+            &::placeholder {
+              color: $color-muted;
+            }
+
+            &:hover {
+              border-color: #d1d5db;
+            }
+          }
+
+          .inputIcon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $color-muted;
+            font-size: $font-size-sm;
+            pointer-events: none;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .gender_section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        > label {
+          font-size: $font-size-sm;
+          font-weight: 600;
+          color: $color-text;
+        }
+
+        .radioWrapper {
+          display: flex;
+          gap: 20px;
+
+          .radioLabel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: $font-size-base;
+            color: $color-text;
+
+            input[type="radio"] {
+              width: 18px;
+              height: 18px;
+              margin: 0;
+              cursor: pointer;
+              accent-color: $color-primary;
+
+              &:focus {
+                outline: 2px solid rgba(39, 110, 241, 0.2);
+                outline-offset: 2px;
+              }
+            }
+
+            span {
+              user-select: none;
+            }
+          }
+        }
+      }
+
+      .button_section {
+        margin-top: 8px;
+
+        button {
+          width: 100%;
+          padding: 12px 24px;
+          font-size: $font-size-sm;
+          font-weight: 600;
+          color: white;
+          background-color: $color-primary;
+          border: none;
+          border-radius: $radius-md;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-shadow: $shadow-sm;
+
+          &:hover {
+            background-color: #1e5cd8;
+            box-shadow: $shadow-md;
+          }
+
+          &:active {
+            transform: translateY(0);
+            box-shadow: $shadow-sm;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(39, 110, 241, 0.2);
+          }
+        }
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+        color: $color-muted;
+        font-size: $font-size-sm;
+
+        &::before,
+        &::after {
+          content: "";
+          flex: 1;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        span {
+          padding: 0 16px;
+        }
+      }
+
+      .socialButtons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+
+        .socialButton {
+          width: 48px;
+          height: 48px;
+          border: 1px solid #e5e7eb;
+          border-radius: $radius-md;
+          background-color: white;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+
+          &:hover {
+            border-color: #d1d5db;
+            box-shadow: $shadow-sm;
+          }
+
+          &:active {
+            transform: scale(0.95);
+          }
+
+          .socialIcon {
+            font-size: $font-size-lg;
+            font-weight: 600;
+            color: $color-text;
+          }
+        }
+      }
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: $font-size-sm;
+      color: $color-muted;
+      display: flex;
+      gap: 8px;
+
+      .footerLink {
+        color: $color-primary;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #1e5cd8;
+        }
+      }
+    }
+  }
+
+  .rightPanel {
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      #667eea 0%,
+      #764ba2 25%,
+      #f093fb 50%,
+      #4facfe 75%,
+      #00f2fe 100%
+    );
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+          circle at 20% 30%,
+          rgba(255, 255, 255, 0.3) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(255, 255, 255, 0.2) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 40% 50%,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 50%
+        );
+      animation: float 20s ease-in-out infinite;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(
+          circle at 10% 20%,
+          rgba(255, 255, 255, 0.4) 2px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 30% 40%,
+          rgba(255, 255, 255, 0.3) 1px,
+          transparent 1px
+        ),
+        radial-gradient(
+          circle at 70% 60%,
+          rgba(255, 255, 255, 0.4) 2px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(255, 255, 255, 0.3) 1px,
+          transparent 1px
+        ),
+        radial-gradient(
+          circle at 50% 10%,
+          rgba(255, 255, 255, 0.2) 1.5px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle at 20% 70%,
+          rgba(255, 255, 255, 0.3) 1px,
+          transparent 1px
+        ),
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(255, 255, 255, 0.4) 2px,
+          transparent 2px
+        );
+      background-size: 200px 200px, 150px 150px, 180px 180px, 120px 120px,
+        160px 160px, 140px 140px, 190px 190px;
+      background-position: 0% 0%, 20% 30%, 40% 60%, 60% 80%, 80% 20%, 10% 70%,
+        90% 40%;
+      animation: bubble 15s ease-in-out infinite;
+      opacity: 0.6;
+    }
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(10px, -10px) rotate(2deg);
+  }
+  66% {
+    transform: translate(-10px, 10px) rotate(-2deg);
+  }
+}
+
+@keyframes bubble {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, -30px);
+  }
+}

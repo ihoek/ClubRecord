@@ -1,7 +1,9 @@
 import styles from "./login.module.scss";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -9,8 +11,14 @@ const Login = () => {
     },
     onSubmit: (values) => {
       console.log(values);
+      navigate("/home");
     },
   });
+
+  // 회원가입 페이지로 이동
+  const MovePage = () => {
+    navigate("/join");
+  };
   return (
     <div className={styles.container}>
       <div className={styles.leftPanel}>
@@ -68,7 +76,9 @@ const Login = () => {
         </form>
         <div className={styles.footer}>
           <span>Don't have an account?</span>
-          <span className={styles.footerLink}>Sign Up</span>
+          <span className={styles.footerLink} onClick={MovePage}>
+            Sign Up
+          </span>
         </div>
       </div>
       <div className={styles.rightPanel}></div>
