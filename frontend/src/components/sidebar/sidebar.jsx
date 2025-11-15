@@ -1,24 +1,34 @@
 import styles from "./sidebar.module.scss";
+import { sidebarItems } from "../../utils/list";
 
 const Sidebar = () => {
   return (
-    <aside className={styles.sidebar}>
-      <div className={styles.brand}>
-        <span className={styles.logo}>Club Record</span>
-        <p className={styles.subtitle}>팀 기록을 한눈에</p>
-      </div>
+    <div className={styles.container}>
+      <div className={styles.layout}>
+        {/* header */}
+        <div className={styles.header}>
+          <div>ClubRecord</div>
+        </div>
 
-      <nav className={styles.nav}>
-        <button type="button" className={styles.navButton}>
-          메인 화면
-        </button>
-      </nav>
+        {/* content */}
+        <div className={styles.content}>
+          {sidebarItems.map((item, index) => {
+            return (
+              <div className={styles.item} key={index}>
+                <div className={styles.item_icon}>{item.icon}</div>
+                <div>{item.label}</div>
+              </div>
+            );
+          })}
+        </div>
 
-      <div className={styles.footer}>
-        <span>버전 0.1</span>
-        <span>© 2025 Club Record</span>
+        {/* footer */}
+        <div className={styles.footer}>
+          <div className={styles.footer_name}>이정민님</div>
+          <div className={styles.footer_logbtn}>로그아웃</div>
+        </div>
       </div>
-    </aside>
+    </div>
   );
 };
 
