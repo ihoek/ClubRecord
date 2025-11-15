@@ -1,0 +1,161 @@
+@import "../../styles/variables.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background-color: white;
+  border-radius: $radius-md;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// 헤더: 월/년도 및 네비게이션
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  flex-shrink: 0;
+
+  .monthYear {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-text;
+    flex: 1;
+    text-align: center;
+  }
+
+  .navButton {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: $color-muted;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: $radius-sm;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $color-background;
+      color: $color-text;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+// 요일 헤더
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+
+  .weekday {
+    text-align: center;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $color-muted;
+    padding: 10px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+// 날짜 그리드
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 2px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+
+  .dayCell {
+    min-height: 0;
+    border: 1px solid #e5e7eb;
+    border-radius: $radius-sm;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    transition: background-color 0.2s;
+    overflow: hidden;
+
+    &:hover {
+      background-color: #f9fafb;
+    }
+
+    &.otherMonth {
+      background-color: #f9fafb;
+      opacity: 0.5;
+
+      .dayNumber {
+        color: $color-muted;
+      }
+    }
+
+    .dayCell_content {
+      width: 100%;
+    }
+
+    .dayNumber {
+      font-size: $font-size-sm;
+      font-weight: 500;
+      color: $color-text;
+      margin-bottom: 4px;
+      padding: 2px 4px;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .today {
+        background-color: $color-primary;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+    }
+
+    .events {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+      overflow: hidden;
+
+      .event {
+        font-size: 11px;
+        padding: 3px 6px;
+        border-radius: 3px;
+        border-left: 3px solid;
+        color: $color-text;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

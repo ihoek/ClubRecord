@@ -1,7 +1,6 @@
 import styles from "./sidebar.module.scss";
-import { sidebarItems } from "../../utils/list";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarItems }) => {
   return (
     <div className={styles.container}>
       <div className={styles.layout}>

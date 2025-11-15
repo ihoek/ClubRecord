@@ -14,8 +14,8 @@ const DocumentIcon = ({ width, height, color }) => {
       <path
         d="M8 12h8m-8 3.5h5.5M4 6v13a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-5M4 6V5m0 1h13a3 3 0 0 1 3 3v1"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );

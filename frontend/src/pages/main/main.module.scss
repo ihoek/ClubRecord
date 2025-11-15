@@ -1,4 +1,52 @@
 @use "../../styles/variables" as *;
 
 .container {
+  width: 100%;
+  height: 100%;
+
+  .layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    gap: 10px;
+    box-sizing: border-box;
+
+    .left_content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      flex: 2;
+      gap: 10px;
+
+      .calendar {
+        flex: 3;
+      }
+      .calendar_content {
+        flex: 1;
+        background-color: yellow;
+      }
+    }
+
+    .right_content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+
+      .right_content_header {
+        flex: 1;
+        background-color: red;
+      }
+      .right_content_info {
+        flex: 1.5;
+        background-color: orange;
+      }
+      .right_content_activity {
+        flex: 4;
+        background-color: purple;
+      }
+    }
+  }
 }
