@@ -149,8 +149,7 @@
               accent-color: $color-primary;
 
               &:focus {
-                outline: 2px solid rgba(39, 110, 241, 0.2);
-                outline-offset: 2px;
+                outline: none;
               }
             }
 
@@ -247,6 +246,11 @@
             color: $color-text;
           }
         }
+      }
+      .error {
+        color: $color-danger;
+        font-size: $font-size-xs;
+        font-weight: 600;
       }
     }
 
