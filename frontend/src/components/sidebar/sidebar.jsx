@@ -1,6 +1,17 @@
-import styles from "./sidebar.module.scss";
+import styles from "./Sidebar.module.scss";
+import { useNavigate } from "react-router-dom";
+// store
+import userStore from "../../store/userStore";
 
 const Sidebar = ({ sidebarItems }) => {
+  const { user, logout } = userStore();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.layout}>
@@ -23,8 +34,14 @@ const Sidebar = ({ sidebarItems }) => {
 
         {/* footer */}
         <div className={styles.footer}>
-          <div className={styles.footer_name}>이정민님</div>
-          <div className={styles.footer_logbtn}>로그아웃</div>
+          {user && (
+            <>
+              <div className={styles.footer_name}>{user.username}님</div>
+              <div className={styles.footer_logbtn} onClick={handleLogout}>
+                로그아웃
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

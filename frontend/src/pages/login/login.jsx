@@ -2,9 +2,11 @@ import styles from "./login.module.scss";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
+import useUserStore from "../../store/userStore";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useUserStore();
   const formik = useFormik({
     initialValues: {
       email: "test@gmail.com",
@@ -13,7 +15,12 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const response = await axiosInstance.post("/api/user/login", values);
-        console.log("로그인 성공:", response.data);
+
+        // 스토어에 유저 정보 저장
+        if (response.data.user) {
+          login(response.data.user);
+        }
+
         alert(response.data.message || "로그인 성공");
         navigate("/home");
       } catch (error) {
