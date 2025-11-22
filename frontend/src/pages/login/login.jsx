@@ -1,17 +1,34 @@
 import styles from "./login.module.scss";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Login = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "test@gmail.com",
+      password: "123",
     },
-    onSubmit: (values) => {
-      console.log(values);
-      navigate("/home");
+    onSubmit: async (values) => {
+      try {
+        const response = await axiosInstance.post("/api/user/login", values);
+        console.log("로그인 성공:", response.data);
+        alert(response.data.message || "로그인 성공");
+        navigate("/home");
+      } catch (error) {
+        console.error("로그인 오류:", error);
+        if (error.response?.status === 401) {
+          alert(
+            error.response.data.message ||
+              "이메일 또는 비밀번호가 일치하지 않습니다."
+          );
+        } else {
+          alert(
+            error.response?.data?.message || "로그인 중 오류가 발생했습니다."
+          );
+        }
+      }
     },
   });
 

@@ -2,6 +2,7 @@ import styles from "./join.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { joinValidationSchema } from "../../utils/validation";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -32,10 +33,28 @@ const Join = () => {
       address: "",
     },
     validationSchema: joinValidationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-
-      // navigate("/login");
+    onSubmit: async (values, { setFieldError }) => {
+      try {
+        // passwordConfirm은 서버로 전송하지 않음
+        const { passwordConfirm: _passwordConfirm, ...submitData } = values;
+        const response = await axiosInstance.post("/api/user/join", submitData);
+        console.log("회원가입 성공:", response.data);
+        alert(response.data.message || "회원가입이 완료되었습니다.");
+        navigate("/login");
+      } catch (error) {
+        console.error("회원가입 오류:", error);
+        if (error.response?.status === 409) {
+          // 이메일 중복 에러
+          setFieldError(
+            "email",
+            error.response.data.message || "이미 존재하는 이메일입니다."
+          );
+        } else {
+          alert(
+            error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+          );
+        }
+      }
     },
   });
 
