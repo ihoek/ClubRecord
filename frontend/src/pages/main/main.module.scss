@@ -36,14 +36,14 @@
       gap: 10px;
 
       .right_content_header {
-        flex: 1;
+        flex: 2.5;
       }
       .right_content_info {
-        flex: 1.5;
+        flex: 1;
         background-color: orange;
       }
       .right_content_activity {
-        flex: 4;
+        flex: 4.5;
         background-color: purple;
       }
     }

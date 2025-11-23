@@ -7,4 +7,9 @@ export const sidebarItems = [
     icon: <DocumentIcon width="24" height="24" color="#1c274d" />,
     path: "/home",
   },
+  {
+    label: "Club",
+    icon: <DocumentIcon width="24" height="24" color="#1c274d" />,
+    path: "/club",
+  },
 ];

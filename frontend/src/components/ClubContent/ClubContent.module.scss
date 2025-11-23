@@ -1,0 +1,197 @@
+@import "../../styles/variables.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  gap: 8px;
+
+  &.blurred {
+    filter: blur(4px);
+    opacity: 0.5;
+    transform: scale(0.95);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &.hovered {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: none;
+    opacity: 1;
+  }
+
+  .header {
+    position: relative;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--card-color, #51cf66);
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    }
+
+    .title {
+      position: relative;
+      z-index: 2;
+      font-size: $font-size-lg;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90%;
+      padding: 0 8px;
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+    min-height: 0;
+
+    .description {
+      font-size: $font-size-xs;
+      color: #495057;
+      min-height: 60px;
+    }
+
+    .info_section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .gender,
+    .address {
+      font-size: $font-size-xs;
+      color: #6c757d;
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .member_info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 8px;
+      background-color: #f8f9fa;
+      border-radius: $radius-sm;
+
+      border-left: 2px solid var(--card-color, #ff6b6b);
+    }
+
+    .memberCurrent {
+      font-size: $font-size-xs;
+      color: var(--card-color, #ff6b6b);
+      font-weight: 600;
+    }
+
+    .minMemberCount {
+      font-size: $font-size-xs;
+      color: #6c757d;
+    }
+
+    .footer {
+      display: flex;
+      width: 100%;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .view_button,
+    .join_button {
+      flex: 1;
+      height: 32px;
+      border-radius: $radius-sm;
+      font-size: $font-size-xs;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .view_button {
+      background-color: #ffffff;
+      color: #6c757d;
+      border: 1px solid #dee2e6;
+
+      &:hover {
+        background-color: #f8f9fa;
+        border-color: #adb5bd;
+        color: #495057;
+      }
+
+      &:active {
+        background-color: #e9ecef;
+      }
+    }
+
+    .join_button {
+      background-color: var(--card-color, #51cf66);
+      color: #ffffff;
+      border: 1px solid var(--card-color, #51cf66);
+
+      &:hover {
+        opacity: 0.9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &:active {
+        opacity: 0.8;
+        transform: scale(0.98);
+      }
+    }
+
+    .createdAt {
+      font-size: $font-size-xs;
+      padding-top: 5px;
+      color: #adb5bd;
+      border-top: 1px solid #e9ecef;
+      text-align: right;
+      line-height: 1;
+      margin-top: 8px;
+    }
+  }
+}

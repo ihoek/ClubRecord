@@ -7,6 +7,7 @@ const userRouter = require("./routes/user.js");
 
 require("./db/index"); // DB 연결 초기화(콘솔에서 연결 결과 확인)
 require("./db/user"); // 스키마 초기화: users 테이블 생성(없으면)
+require("./db/club"); // 스키마 초기화: clubs 테이블 생성(없으면)
 
 // 미들웨어 설정 (라우터 설정 전에 배치)
 app.use(express.json());

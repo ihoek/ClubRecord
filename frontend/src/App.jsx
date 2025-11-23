@@ -6,6 +6,7 @@ import Main from "./pages/main/main";
 import Sidebar from "./components/sidebar/sidebar";
 import Login from "./pages/login/login";
 import Join from "./pages/join/join";
+import Club from "./pages/club/club";
 
 // utils
 import { sidebarItems } from "./utils/list";
@@ -37,6 +38,7 @@ function App() {
               <Route path="/" element={<Navigate to="/login" replace />} />
               <Route path="/home" element={<Main />} />
               <Route path="/login" element={<Navigate to="/login" />} />
+              <Route path="/club" element={<Club />} />
             </Routes>
           </div>
         </>

@@ -24,7 +24,11 @@ const Sidebar = ({ sidebarItems }) => {
         <div className={styles.content}>
           {sidebarItems.map((item, index) => {
             return (
-              <div className={styles.item} key={index}>
+              <div
+                className={styles.item}
+                key={index}
+                onClick={() => navigate(item.path)}
+              >
                 <div className={styles.item_icon}>{item.icon}</div>
                 <div>{item.label}</div>
               </div>

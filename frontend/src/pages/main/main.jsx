@@ -3,6 +3,7 @@ import styles from "./main.module.scss";
 // components
 import Calendar from "../../components/Calendar/Calendar";
 import Club from "../../components/Club/Club";
+
 const Main = () => {
   return (
     <div className={styles.container}>
